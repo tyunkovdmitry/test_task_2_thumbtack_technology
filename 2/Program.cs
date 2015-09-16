@@ -10,29 +10,23 @@ namespace _2
     {
         static void Main(string[] args)
         {
-            #region Чтение слов из файла
-
+            //----------Чтение слов из файла----------
             var sentence = File.ReadAllText("input.txt", Encoding.Default);
             sentence = Regex.Replace(sentence, @"[^А-я ]", String.Empty);
             var word = sentence.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
             var m = word.Length;
+            //----------------------------------------
 
-            #endregion
-
-            #region Определение самого длинного палиндрома
-
+            //----------Определение самого длинного палиндрома----------
             var palindrome = String.Empty;
             for (var i = 0; i < m; i++)
                 if (IsPalindrome(word[i]) && word[i].Length > palindrome.Length)
                         palindrome = word[i];
+            //----------------------------------------------------------
 
-            #endregion
-
-            #region Вывод самого длинного палиндромма, если имеется
-
+            //----------Вывод самого длинного палиндромма, если имеется----------
             File.WriteAllText("output.txt", palindrome.Equals(String.Empty) ? "отсутствует" : palindrome);
-
-            #endregion
+            //-------------------------------------------------------------------
         }
 
         /// <summary>
